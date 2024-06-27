@@ -8,7 +8,6 @@ const MultiSelectBox = ({ options, selectedOptions, onChange, label, className =
   };
 
   const selectedItems = selectedOptions.map(value => options.find(option => option.value === value)).filter(Boolean);
-  console.log(selectedItems);
 
   return (
     <div className={className}>
