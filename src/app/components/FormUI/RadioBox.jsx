@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RadioBox = ({ options, selectedOption, onChange, label, className = '', name }) => {
+const RadioBox = ({ options, selectedOption, onChange, label, className = '', name, error }) => {
   const handleRadioChange = (optionValue) => {
     onChange(optionValue, name);
   };
@@ -22,6 +22,7 @@ const RadioBox = ({ options, selectedOption, onChange, label, className = '', na
           <label htmlFor={option.value}>{option.label}</label>
         </div>
       ))}
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
     </div>
   );
 };

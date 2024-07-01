@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const SelectBox = ({ options, selectedOption, onChange, label, className = '', name }) => {
+const SelectBox = ({ options, selectedOption, onChange, label, className = '', name, error }) => {
   const handleChange = (selectedItem) => {
     onChange(selectedItem.value, name);
   };
@@ -18,6 +18,7 @@ const SelectBox = ({ options, selectedOption, onChange, label, className = '', n
         isClearable
         className="text-left" // Căn lề trái cho Select
       />
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
     </div>
   );
 };

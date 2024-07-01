@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CheckBox = ({ options = [], selectedOptions, onChange, label, className = '', name }) => {
+const CheckBox = ({ options = [], selectedOptions, onChange, label, className = '', name, error }) => {
   const handleCheckboxChange = (optionValue) => {
     const selectedIndex = selectedOptions.indexOf(optionValue);
     if (selectedIndex === -1) {
@@ -36,6 +36,7 @@ const CheckBox = ({ options = [], selectedOptions, onChange, label, className = 
       ) : (
         <p>No options available</p>
       )}
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const MultiSelectBox = ({ options, selectedOptions, onChange, label, className = '', name }) => {
+const MultiSelectBox = ({ options, selectedOptions, onChange, label, className = '', name, error }) => {
   const handleChange = (selectedItems) => {
     const selectedValues = selectedItems.map(item => item.value);
     onChange(selectedValues, name);
@@ -20,6 +20,7 @@ const MultiSelectBox = ({ options, selectedOptions, onChange, label, className =
         closeMenuOnSelect={false}
         className="text-left"
       />
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
     </div>
   );
 };

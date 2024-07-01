@@ -18,3 +18,36 @@ code {
 .react-datepicker-wrapper{
   width: 100% !important;
 }
+.popup-content{
+  border: none !important;
+  background: none !important;
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 0.25rem;
+}
+
+.pagination li a {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.pagination li.active a {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+

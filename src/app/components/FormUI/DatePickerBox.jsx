@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Để import CSS của react-datepicker
 
-const DatePickerBox = ({ selectedDate, onChange, label, className = '', name }) => {
+const DatePickerBox = ({ selectedDate, onChange, label, className = '', name, error }) => {
   // Hàm này sẽ được gọi khi có sự thay đổi ngày
   const handleDateChange = (date) => {
     onChange(date, name); // Gọi hàm callback onChange và truyền giá trị ngày mới
@@ -19,6 +19,7 @@ const DatePickerBox = ({ selectedDate, onChange, label, className = '', name }) 
             className="form-control w-full text-left border-none outline-none" // Class CSS cho DatePicker (tuỳ chọn)
         />
       </div>
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
     </div>
   );
 };
