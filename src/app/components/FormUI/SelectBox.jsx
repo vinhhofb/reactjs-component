@@ -1,24 +1,30 @@
 import React from 'react';
 import Select from 'react-select';
+import { Controller } from 'react-hook-form';
 
-const SelectBox = ({ options, selectedOption, onChange, label, className = '', name, error }) => {
-  const handleChange = (selectedItem) => {
-    onChange(selectedItem.value, name);
-  };
-
-  const selectedValue = options.find(option => option.value === selectedOption);
-
+const SelectBox = ({ control, options, name, label, className = '', error }) => {
   return (
     <div className={className}>
       {label && <label className="block text-left mb-2">{label}</label>}
-      <Select
-        options={options}
-        value={selectedValue}
-        onChange={handleChange}
-        isClearable
-        className="text-left" // Căn lề trái cho Select
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { onChange, value, ref } }) => {
+          const selectedValue = options.find(option => option.value === value);
+          
+          return (
+            <Select
+              options={options}
+              value={selectedValue}
+              onChange={(selectedItem) => onChange(selectedItem ? selectedItem.value : null)}
+              isClearable
+              className="text-left" // Căn lề trái cho Select
+              ref={ref}
+            />
+          );
+        }}
       />
-      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name]}</div>}
+      {error[name] && <div className="text-red-500 mt-1 text-sm">{error[name].message}</div>}
     </div>
   );
 };
